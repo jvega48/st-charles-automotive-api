@@ -1,6 +1,12 @@
 ## Getting Started
 
-This is a simple API that uses a jwt Bearer token to authenthicate the users allow to use the app.
+This is a simple API build for St Charles Automotive that uses a JWT Bearer token to authenticate the users allowing them to use the API.
+
+```diff
+- Disclaimer for demo purposes we are running the api on: http://localhost
++ Full api url: http://localhost:4000 - Full mongodb database url: mongodb://localhost:27017/booking_app_db
+! Using Port 4000 (change port on the env file)
+```
 
 ### Prerequisites
 
@@ -9,12 +15,12 @@ This is an example of how to list things you need to use the software and how to
   ```
     [Installation guide for node.js](https://nodejs.org/en/download/)
   ```
-* macos mongodb installation
+* MacOS Mongodb installation
   ```
     [Installation guide for mac](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 
   ```
-* windows mongodb installation
+* Windows Mongodb installation
   ```
     [Installation guide for windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
@@ -22,34 +28,147 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-* Install app and the required packages
+* <strong>Install app and the required packages<strong>
   ```
     npm install
   ```
 
-## How to run the app, unit test, test coverage, swagger api documentation
+### Running Mongodb before running the app or the unit test
 
-* Run app
+* Windows machine
   ```
-    npm run dev
-  ```
-* Run unit test
-  ```
-    npm run test
-  ```
-* Run unit test coverage
-  ```
-    npm run test-coverage
-  ```
-* Open API docs (Feature under construction) small demo 
-    [API DOCS](http://127.0.0.1:4000/api-docs)
+   1. Create a database directory
+      -  cd C:\
+      -  md "\data\db"
 
-## API authentication to access the endpoints
+   2. Start the MongoDB Database
+      - "C:\Program Files\MongoDB\Server\5.0\bin\mongod.exe" --dbpath="c:\data\db"
 
-* Navigate to [http://127.0.0.1:4000/register](http://127.0.0.1:4000/register)
+   3. Run the app or run the unit test
+      - waiting for connections, this show that your db is running and ready to be used
+  ```
+* MacOS machine
+  ```
+   1. Create a database directory if you don't already have one
+      - sudo mkdir -p /data/db
+
+   2. Give the data directory permission
+      - sudo chown -R `id -un` /data/db
+
+   3. Run the app or run the unit test
+      - brew services start mongodb
+
+   4. Restart mongodb
+      - brew services restart mongodb
+
+   5. Restart mongodb
+      - brew services restart mongodb
+  ```
+### How to run the app, unit test, test coverage, swagger api documentation
+
+* <strong>Run express API</strong> :white_check_mark:
+  ```
+   npm run dev 
+  ```
+* <strong>Run unit test</strong> :white_check_mark:
+  ```
+    npm run test 
+  ```
+* Run unit test coverage</strong> :white_check_mark:
+  ```
+    npm run test-coverage 
+  ```
+* :construction: Swagger API DOCS (V1 Users only) Draft one
+    [API DOCS](http://localhost:4000/api-docs)
+
+### API Token type
+  ```
+  In order to use the api provide an authorization bearer token
+  ```
+
+  <strong>Registration Example</strong> :rocket:
+  ![Reregistration example](./api/img/register.jpg)
+
+  <strong>Login Example</strong> :airplane:
+  ![Login example](./api/img/login.jpg) 
+
+#### API Authentication to access the endpoints
+POST - Register user to access the api
+* Navigate to [http://localhost:4000/register](http://localhost:4000/register)
+
+POST - Login with bearer token
+* Navigate to [http://localhost:4000/login](http://localhost:4000/login)
+
+#### API User endpoints
+GET - Get all users and returns a list of Users (User Model)
+* Navigate to [http://localhost:4000/api/v1/user](http://localhost:4000/api/v1/user)
+
+POST - Created a new user and return the new user (User Model)
+* Navigate to [http://localhost:4000/api/v1/user](http://localhost:4000/api/v1/user)
+
+GET - Gets a user with the email provided and returns a users (User Model)
+* Navigate to [http://localhost:4000/api/v1/user/email/:email](http://localhost:4000/api/v1/user/email/:email)
+
+GET - Gets a user with the userId provided and returns a single user (User Model)
+* Navigate to [http://localhost:4000/api/v1/user/:userId](http://localhost:4000/api/v1/user/:userId)
+
+PATCH - Updates a user given a userId and returns an update user (User Model)
+* Navigate to [http://localhost:4000/api/v1/user/:userId](http://localhost:4000/api/v1/user/:userId)
+
+DELETE - Gets a user with the userId provided and object gets deleted
+* Navigate to [http://localhost:4000/api/v1/user/:userId](http://localhost:4000/api/v1/user/:userId)
+
+#### API Reservation endpoints
+GET - Get all reservations and returns a list of reservation (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation](http://localhost:4000/api/v1/reservation)
+
+POST - Creates a new reservation and returns a reservation (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation](http://localhost:4000/api/v1/reservation)
+
+GET - Gets a single reservation with the reservationId provided and returns a reservation (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation/:reservationId](http://localhost:4000/api/v1/reservation/:reservationId)
+
+PATCH - Updates a reservation with the reservationId provided and returns the update reservation (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation/:reservationId](http://localhost:4000/api/v1/reservation/:reservationId)
+
+DELETE -Deletes a reservation based on the reservationId provided (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation/:reservationId](http://localhost:4000/api/v1/reservation/:reservationId)
+
+PATCH - Update the status of the reservation to start based on the reservationId (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation/:reservationId/start](http://localhost:4000/api/v1/reservation/:reservationId/start)
+
+PATCH - Update the status of the reservation to complete based on the reservationId (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation/:reservationId/complete](http://localhost:4000/api/v1/reservation/:reservationId/completet)
+
+GET - Gets a users reservation history with the userId & reservationId provided and returns the reservation for the user (Reservation Model)
+* Navigate to [http://localhost:4000/api/v1/reservation/history/:reservationId/:userId](http://localhost:4000/api/v1/reservation/history/:reservationId/:userId)
 
 
-* Navigate to [http://127.0.0.1:5050/4000](http://127.0.0.1:4000/login)
- 
+#### API Vehicle endpoints
+GET - Get all vehicle and returns a list of vehicle (Vehicle Model)
+* Navigate to [http://localhost:4000/api/v1/vehicle](http://localhost:4000/api/v1/vehicle)
 
-* Navigate to [http://127.0.0.1:4000/api/v1/user](http://127.0.0.1:4000/api/v1/user)
+POST - Creates a new vehicle and returns a vehicle (Vehicle Model)
+* Navigate to [http://localhost:4000/api/v1/vehicle](http://localhost:4000/api/v1/vehicle)
+
+GET - Gets a single vehicle with the vin number provided and returns a the correct car (Vehicle Model)
+* Navigate to [http://localhost:4000/api/v1/vehicle/vin/:vin](http://localhost:4000/api/v1/vehicle/vin/:vin)
+
+GET - Gets a vehicle with the vehicleId provided (Vehicle Model)
+* Navigate to [http://localhost:4000/api/v1/vehicle/:vehicleId](http://localhost:4000/api/v1/vehicle/:vehicleId)
+
+PATCH - Updates a vehicle given a vehicleId (Vehicle Model)
+* Navigate to [http://localhost:4000/api/v1/vehicle/:vehicleId](http://localhost:4000/api/v1/user/:vehicleId)
+
+DELETE - Deletes a vehicle with the vehicleId provided (Vehicle Model)
+* Navigate to [http://localhost:4000/api/v1/vehicle/:vehicleId](http://localhost:4000/api/v1/vehicle/:vehicleId)
+
+#### Bookings endpoints
+GET - Get all bookings and returns a list of bookings (Bookings Model)
+* Navigate to [http://localhost:4000/api/v1/bookings](http://localhost:4000/api/v1/bookings)
+
+POST - Creates a new slots of booking availability and returns the day with booking slots (Bookings Model)
+* Navigate to [http://localhost:4000/api/v1/bookings](http://localhost:4000/api/v1/bookings)
+
+DELETE - Deletes the day ov available bookings with the bookingId provided (Bookings Model)
+* Navigate to [http://localhost:4000/api/v1/bookings/:bookingId](http://localhost:4000/api/v1/bookings/:bookingId)
