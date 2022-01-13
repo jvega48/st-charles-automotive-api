@@ -1,6 +1,6 @@
 ## Getting Started
 
-This is a simple API build for St Charles Automotive that uses a JWT Bearer token to authenticate the users allowing them to use the API.
+This is a simple API build for [St Charles Automotive](https://github.com/jvega48/st-charles-automotive-api) that uses a JWT Bearer token to authenticate the users allowing them to use the API.
 
 ```diff
 - Disclaimer for demo purposes we are running the api on: http://localhost
@@ -66,9 +66,7 @@ This is an example of how to list things you need to use the software and how to
       - brew services restart mongodb
   ```
 ### How to run the app, unit test, test coverage, swagger api documentation
-  ```diff
-  - Disclaimer before running the unit test gracefully end the api
-  ```
+
 * <strong>Run express API</strong> :white_check_mark:
   ```
    npm run dev 
