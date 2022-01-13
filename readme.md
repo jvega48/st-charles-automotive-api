@@ -89,10 +89,10 @@ This is an example of how to list things you need to use the software and how to
   ```
 
   <strong>Register to use the API Example</strong> :rocket:
-  ![Registration example](./api/img/register.jpg)
+  ![Registration example](https://github.com/jvega48/st-charles-automotive-api/blob/main/register.jpg)
 
   <strong>Login to use the API Example</strong> :airplane:
-  ![Login example](./api/img/login.jpg) 
+  ![Login example](https://github.com/jvega48/st-charles-automotive-api/blob/main/login.jpg) 
 
 #### API Authentication to access the endpoints
 POST - Register user to access the api
