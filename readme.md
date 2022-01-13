@@ -4,8 +4,9 @@ This is a simple API build for St Charles Automotive that uses a JWT Bearer toke
 
 ```diff
 - Disclaimer for demo purposes we are running the api on: http://localhost
-+ Full api url: http://localhost:4000 - Full mongodb database url: mongodb://localhost:27017/booking_app_db
-! Using Port 4000 (change port on the env file)
+- Using Port 4000 (change port on the env file)
++ Full api url: http://localhost:4000 
++ Full mongodb database url: mongodb://localhost:27017/booking_app_db
 ```
 
 ### Prerequisites
@@ -65,7 +66,9 @@ This is an example of how to list things you need to use the software and how to
       - brew services restart mongodb
   ```
 ### How to run the app, unit test, test coverage, swagger api documentation
-
+  ```diff
+  - Disclaimer before running the unit test gracefully end the api
+  ```
 * <strong>Run express API</strong> :white_check_mark:
   ```
    npm run dev 
@@ -74,22 +77,21 @@ This is an example of how to list things you need to use the software and how to
   ```
     npm run test 
   ```
-* Run unit test coverage</strong> :white_check_mark:
+* <strong>Run unit test coverage</strong> :white_check_mark:
   ```
     npm run test-coverage 
   ```
-* :construction: Swagger API DOCS (V1 Users only) Draft one
-    [API DOCS](http://localhost:4000/api-docs)
+* Swagger API DOCS (V1 Users only) Draft one experimental phase :construction: [API DOCS](http://localhost:4000/api-docs)
 
 ### API Token type
   ```
   In order to use the api provide an authorization bearer token
   ```
 
-  <strong>Registration Example</strong> :rocket:
-  ![Reregistration example](./api/img/register.jpg)
+  <strong>Register to use the API Example</strong> :rocket:
+  ![Registration example](./api/img/register.jpg)
 
-  <strong>Login Example</strong> :airplane:
+  <strong>Login to use the API Example</strong> :airplane:
   ![Login example](./api/img/login.jpg) 
 
 #### API Authentication to access the endpoints
